@@ -42,37 +42,38 @@
 - DTO를 통한 데이터 변환으로 API 변경에 유연하게 대응할 수 있습니다.  
 - 배치 작업 자동화로 주기적 데이터 업데이트가 가능합니다.
 
-> # 🎬 영화 프로젝트 전체 구조도
+> **🎬 영화 프로젝트 전체 구조도**
 > 
-> Controller               ← 사용자 요청(웹/REST API) 받음  
-> (MovieController 등)  
+> **Controller**               **← 사용자 요청(웹/REST API) 받음**  
+> **(MovieController 등)**  
 > │  
 > ▼  
-> Service                  ← 비즈니스 로직 처리  
-> (MovieService, BatchService)  
+> **Service**                  **← 비즈니스 로직 처리**  
+> **(MovieService, BatchService)**  
 > │  
 > ▼  
-> Repository               ← DB에 직접 접근(JPA, JdbcTemplate)  
-> (MovieRepository 등)  
+> **Repository**               **← DB에 직접 접근(JPA, JdbcTemplate)**
+> **(MovieRepository 등)**  
 > │  
 > ▼  
-> Database                 ← 영화 데이터 저장소 (MySQL, H2 등)  
+> **Database**                 **← 영화 데이터 저장소 (MySQL, H2 등)**  
+ 
 
-> ### 🔄 배치 작업 & 외부 API 연동 흐름
+> **🔄 배치 작업 & 외부 API 연동 흐름**
 >
-> MovieBatchProcessor       ← 스케줄러가 호출하는 배치 작업 클래스  
-> @Scheduled 어노테이션으로 매달 1회 실행  
+> **MovieBatchProcessor**       **← 스케줄러가 호출하는 배치 작업 클래스**  
+> **@Scheduled 어노테이션으로 매달 1회 실행**  
 > │  
 > ▼  
-> MovieOpenApiService       ← 외부 영화 API에서 데이터 조회 담당  
-> API 호출해서 JSON 받아옴  
+> **MovieOpenApiService**       **← 외부 영화 API에서 데이터 조회 담당**  
+> **API 호출해서 JSON 받아옴**  
 > │  
 > ▼  
-> DTO 계층 (Data Transfer Objects) ← JSON → 자바 객체 매핑 역할  
-> (MovieEntireResultDto, MovieListResultDto, MovieResultDto)  
+> **DTO 계층 (Data Transfer Objects) ← JSON → 자바 객체 매핑 역할**  
+> **(MovieEntireResultDto, MovieListResultDto, MovieResultDto)**  
 > │  
 > ▼  
-> Movie Entity             ← DB에 저장하는 엔티티 객체
+> **Movie Entity             ← DB에 저장하는 엔티티 객체**
 
 
 
