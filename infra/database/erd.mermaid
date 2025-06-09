@@ -1,0 +1,29 @@
+erDiagram
+USERS ||--o{ REVIEWS : writes
+USERS {
+BIGINT id PK "Primary Key, Auto Increment"
+VARCHAR username "Unique Username"
+VARCHAR email "Unique Email"
+VARCHAR password "Encrypted Password"
+VARCHAR roles "User Roles (e.g., ROLE_USER)"
+BOOLEAN enabled "Account Enabled (1 = true)"
+TIMESTAMP created_at "Created At"
+TIMESTAMP updated_at "Updated At"
+}
+
+MOVIES ||--o{ REVIEWS : has
+MOVIES {
+int id PK
+string title "영화 제목"
+string genre "장르"
+date release_date "개봉일"
+}
+
+REVIEWS {
+int id PK
+int user_id FK "작성자"
+int movie_id FK "대상 영화"
+int rating "평점 (1~5)"
+string comment "리뷰 내용"
+datetime created_at "작성일"
+}
